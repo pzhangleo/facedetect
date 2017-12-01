@@ -10,8 +10,4 @@ public class FaceIdentifyRequest extends BaseRequest {
     public String group_id = "test";
     public String image;
 
-    @Override
-    public String toString() {
-        return GsonManager.getGson().toJson(this);
-    }
 }

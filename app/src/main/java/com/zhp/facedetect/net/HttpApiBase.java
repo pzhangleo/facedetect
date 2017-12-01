@@ -87,6 +87,7 @@ public class HttpApiBase {
                     "",
                     signStr);
             requestBuilder.addHeader("Authorization", signStr.toString());
+            requestBuilder.header("Content-Type", "text/json");
             Request finalRequest = requestBuilder.build();
             return chain.proceed(finalRequest);
         }

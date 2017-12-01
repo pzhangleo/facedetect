@@ -11,6 +11,10 @@ public class BaseResponse implements BaseObject{
     public int errorcode;
     public String errormsg;
 
+    public boolean isSuc() {
+        return errorcode == 0;
+    }
+
     @Override
     public String toString() {
         return "BaseResponse{" +

@@ -36,6 +36,7 @@ import com.zhp.facedetect.net.Config;
 import com.zhp.facedetect.net.HttpApiBase;
 import com.zhp.facedetect.net.request.FaceIdentifyRequest;
 import com.zhp.facedetect.net.response.FaceidentifyResponse;
+import com.zhp.facedetect.net.response.model.IdentifyItem;
 
 import java.io.File;
 import java.io.IOException;
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+        fab.setVisibility(View.GONE);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -157,10 +159,8 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_face) {
-            // Handle the camera action
-        } else if (id == R.id.nav_add) {
-
+        if (id == R.id.nav_add) {
+            startActivity(new Intent(this, AddPersonActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -188,10 +188,17 @@ public class MainActivity extends AppCompatActivity
                         @Override
                         public void onSuccess(FaceidentifyResponse baseData) {
                             NHLog.d("response %s", baseData.toString());
+                            if (baseData.candidates == null || baseData.candidates.size() == 0) {
+                                Toast.makeText(MainActivity.this, "没有找到匹配的人", Toast.LENGTH_LONG).show();
+                            } else {
+                                IdentifyItem identifyItem = baseData.candidates.get(0);
+                                mNameTv.setText(identifyItem.tag);
+                            }
                         }
 
                         @Override
                         public boolean onFail(int statusCode, @Nullable FaceidentifyResponse failDate, @Nullable Throwable error) {
+                            Toast.makeText(getApplicationContext(), "请求错误", Toast.LENGTH_SHORT).show();
                             return false;
                         }
 

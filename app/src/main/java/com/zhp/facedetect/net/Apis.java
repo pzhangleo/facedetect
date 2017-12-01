@@ -2,6 +2,7 @@ package com.zhp.facedetect.net;
 
 import com.being.base.http.retrofit.calladapter.BaseCall;
 import com.zhp.facedetect.net.response.FaceidentifyResponse;
+import com.zhp.facedetect.net.response.NewPersonResponse;
 
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
@@ -23,5 +24,5 @@ public interface Apis {
 
 
     @POST(Command.newperson)
-    BaseCall<FaceidentifyResponse> newperson(@Body String body);
+    BaseCall<NewPersonResponse> newperson(@Body RequestBody body);
 }

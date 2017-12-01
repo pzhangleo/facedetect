@@ -1,10 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.zhp.facedetect.AddPersonActivity">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context="com.zhp.facedetect.AddPersonActivity">
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/name_tv"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:hint="请输入姓名"/>
+
+        <EditText
+            android:id="@+id/phone_tv"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:hint="请输入手机号"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/gray"/>
+
+        <Button
+            android:id="@+id/camera_btn"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="30dp"
+            android:text="拍照"/>
+
+        <Button
+            android:id="@+id/save_btn"
+            android:visibility="gone"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:text="保存"/>
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:visibility="gone"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>
